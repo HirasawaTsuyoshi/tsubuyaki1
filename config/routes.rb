@@ -4,4 +4,7 @@ Rails.application.routes.draw do
   root 'posts#index'
   resources :comments, except: [:index, :show]
 
+  # イイネ用　
+  resources :likes
+
 end

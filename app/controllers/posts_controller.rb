@@ -5,7 +5,7 @@ class PostsController < ApplicationController
   def index
     # データをすべて取ってきくる必要がある
     @q = Post.order(created_at: :desc).ransack(params[:q])
-    @posts = Post.order(created_at: :desc).page(params[:page]).per(10)
+    @posts = @q.result.page(params[:page]).per(10)
 
     @new_posts = Post.find_newest_article
     @new_comments = Comment.find_newest_comment
@@ -25,7 +25,12 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
+    @post = Post.new(
+      user_id: current_author.id,
+      body: post_params["body"],
+      category_id: post_params["category_id"],
+      likes_count: 100
+      )
     if @post.save
       # redirect_to @post, notice: '投稿に成功しました。'
       redirect_to posts_url
@@ -50,12 +55,12 @@ class PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
-    redirect_to posts_url, notice: '削除しました'
+    redirect_to :root, notice: '削除しました'
   end
 
   private
 
   def post_params
-    params.require(:post).permit(:title, :body, :category_id) # category_idを追加
+    params.require(:post).permit(:user_id, :body, :category_id)
   end
 end

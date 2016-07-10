@@ -5,7 +5,6 @@ Category.create(title: '西山')
 Category.create(title: '御所')
 Category.create(title: '御明神')
 
-
 Author.create(name: "平澤剛", description: "雫石地区在住", image_url: "http://heaaart.com/heartadmin/wp-content/uploads/2016/07/168243-2.png", email: "test@gmail.com", password: "password")
 
 

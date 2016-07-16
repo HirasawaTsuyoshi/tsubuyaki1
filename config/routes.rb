@@ -5,6 +5,10 @@ Rails.application.routes.draw do
   resources :comments, except: [:index, :show]
 
   # イイネ用　
-  resources :likes
+  resources :post do
+    resources :likes, only: [:create, :destroy]
+  end
+
+
 
 end

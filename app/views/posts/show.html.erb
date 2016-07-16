@@ -9,7 +9,6 @@
     <hr>
     <%= link_to '編集する', edit_post_path, class: "btn btn-default" %>
     <%= link_to '削除する', post_path, method: :delete, class: "btn btn-danger", data: { confirm: '本当に削除しますか？'} %>
-
     <hr />
     <h2>コメント一覧</h2>
     <% @comments.each do |comment| %>

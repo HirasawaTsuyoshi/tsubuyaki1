@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
- before_action :authenticate_author!, only: [ :new, :create, :edit, :update, :destroy ]
+ before_action :authenticate_author!, only: [ :new, :create, :edit, :update, :destroy, :index]
 
   # TOPページ
   def index

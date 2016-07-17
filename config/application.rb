@@ -6,7 +6,7 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-module NewMyBlog
+module tsubuyaki
   class Application < Rails::Application
 
     # 初期設定　日本時間と日本語をブログに適用
